@@ -1,0 +1,21 @@
+<div style="text-align:center; margin-top: 20px;">
+  <h1>Movie Search</h1>
+
+  <input type="text"
+         placeholder="Search movies..."
+         [(ngModel)]="searchQuery"
+         (input)="searchMovies()"
+         style="padding: 8px; width: 250px; margin-bottom: 20px; font-size: 16px;" />
+
+  <div *ngIf="movies.length > 0; else noMovies">
+    <div *ngFor="let movie of movies" class="movie-card" style="border: 1px solid #ddd; padding: 10px; margin: 10px; text-align: center; display: inline-block; width: 200px;">
+      <img [src]="movie.posterImageUrl" alt="Poster" style="max-width: 100%; height: auto;" />
+      <h3>{{ movie.title }}</h3>
+      <p>Release Year: {{ movie.releaseYear }}</p>
+    </div>
+  </div>
+
+  <ng-template #noMovies>
+    <p>No movies found!</p>
+  </ng-template>
+</div>
